@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <title>Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <noscript>Your browser has JavaScript disabled. This page requires JavaScript.</noscript>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><i class="fas fa-comments" aria-hidden="true"></i> Chat</h1>
+                    <p>ChatGPT assistant</p>
+                </div>
+                <div class="header-actions">
+                    <a class="add-subject-btn" href="index.html" title="Tasks" aria-label="Tasks">
+                        <i class="fas fa-list-check" aria-hidden="true"></i>
+                        <span>Tasks</span>
+                    </a>
+                    <a class="add-subject-btn" href="calendar.html" title="Calendar" aria-label="Calendar">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        <span>Calendar</span>
+                    </a>
+                    <button class="add-subject-btn" id="openApiKeyModal" title="API settings" aria-label="API settings">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                        <span>API</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle dark or light mode">
+                        <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="chat-section" aria-label="Chat">
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages" aria-live="polite" aria-atomic="false"></div>
+                    <div class="chat-input-bar">
+                        <textarea id="chatInput" rows="1" placeholder="Type a message..." aria-label="Message"></textarea>
+                        <button id="sendBtn" class="send-btn" aria-label="Send"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="notifications" class="notifications" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="modal-overlay" id="apiKeyModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="apiModalTitle">
+            <div class="modal-header">
+                <h3 id="apiModalTitle">OpenAI Settings</h3>
+                <button class="modal-close" id="closeApiKeyModal" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="apiKeyInput">API Key</label>
+                    <input type="password" id="apiKeyInput" placeholder="sk-...">
+                </div>
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="modelSelect">Model</label>
+                    <select id="modelSelect">
+                        <option value="gpt-4o-mini" selected>gpt-4o-mini</option>
+                        <option value="gpt-4o">gpt-4o</option>
+                        <option value="gpt-4-turbo">gpt-4-turbo</option>
+                    </select>
+                </div>
+                <div style="margin-top:14px; display:flex; gap:10px;">
+                    <button id="saveApiSettings" class="add-subject-btn">Save</button>
+                    <button id="clearHistory" class="add-subject-btn">Clear Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
+

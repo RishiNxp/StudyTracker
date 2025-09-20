@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <title>Task Manager - Subjects & Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <noscript>Your browser has JavaScript disabled. This app requires JavaScript to work.</noscript>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><i class="fas fa-tasks" aria-hidden="true"></i> Task Manager</h1>
+                    <p>Organize your subjects and tasks</p>
+                </div>
+                <div class="header-actions">
+                    <a class="add-subject-btn" href="chat.html" title="Chat" aria-label="Chat">
+                        <i class="fas fa-comments" aria-hidden="true"></i>
+                        <span>Chat</span>
+                    </a>
+                    <a class="add-subject-btn" href="calendar.html" title="Open calendar" aria-label="Open calendar">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        <span>Calendar</span>
+                    </a>
+                    <button class="add-subject-btn add-task-toggle" id="toggleTaskFormBtn" title="Add task" aria-label="Add task" aria-expanded="false" aria-controls="taskFormSection">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <span>Add Task</span>
+                    </button>
+                    <button class="add-subject-btn" id="addSubjectBtn" title="Add subject" aria-label="Add subject">
+                        <i class="fas fa-folder-plus" aria-hidden="true"></i>
+                        <span>Add Subject</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle dark or light mode">
+                        <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="add-task-section collapsed" id="taskFormSection" aria-labelledby="addTaskHeading" hidden>
+                <h2 id="addTaskHeading">Add New Task</h2>
+                <form id="taskForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskName">Task Name</label>
+                            <input type="text" id="taskName" name="taskName" required placeholder="Enter task name" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="taskSubjectSelect">Subject</label>
+                            <select id="taskSubjectSelect" name="taskSubjectSelect" required>
+                                <option value="">Select subject</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" name="taskDueDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority" name="taskPriority" required>
+                                <option value="">Select priority</option>
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="add-btn">
+                        <i class="fas fa-plus" aria-hidden="true"></i> Add Task
+                    </button>
+                </form>
+            </section>
+
+            <section class="tasks-container" id="subjectsContainer" aria-label="Subjects">
+                <div class="empty-state" id="subjectsEmpty">
+                    <i class="fas fa-folder-open" aria-hidden="true"></i>
+                    <p>No subjects yet. Click "Add Subject" to create one.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="notifications" class="notifications" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+    </body>
+    </html>
